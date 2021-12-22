@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="user-container"></div>
+    <h2>Hello</h2>
+    <script>
+      const url = "https://jsonplaceholder.typicode.com/users";
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => showUser(data));
+      function showUser(data) {
+        console.log(data);
+        let lists = "";
+        data.forEach((user) => {
+          data.forEach((user) => {
+            lists =
+              lists +
+              `
+                <div> 
+                    <h2>Name: ${user.name} </h2> 
+                    <p>Email: ${user.email}</p>
+                    <p>${user.company.catchPhrase}</p></div>
+                
+            `;
+          });
+        });
+        const userContainer = document.getElementById("user-container");
+        userContainer.innerHTML = lists;
+      }
+    </script>
+  </body>
+</html>
